@@ -1,1 +1,1 @@
-# Galy Studio Web System Documentation
+## Galy Studio Web System Documentation
