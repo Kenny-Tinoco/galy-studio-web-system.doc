@@ -1,0 +1,109 @@
+@startuml
+
+OrderProductsController ..> SaleController
+OrderProductsController -- CartEntity
+OrderProductsController -- DeliveryEntity
+DeliveryEntity ..> SessionEntity
+CartEntity o-- SaleDetailEntity
+SaleDetailEntity -- ProductEntity
+
+class OrderProductsController
+{
+    +orderProducts() : response
+    +cancelOrder() : void
+    +saveOrder() : void
+    +getDelivery() : DeliveryEntity
+    +setDelivery(DeliveryEntity delivery) : void
+    +setProductsOrder(CartEntity cart) : void
+    +getProductsOrder() : List<ProductEntity>
+    +getTotal() : double
+    +cancelDelivery() : void
+    +isRegisterCustomer() : bool
+}
+
+class SaleController
+{
+    +cancel() : void
+    +createSale() : void
+    +createDelivery() : void
+    +cancelDelivery() : void
+    +sendDelivery() : void
+    +orderProducts(CartEntity cart, DeliveryEntity delivery) : response
+    +setCart(CartEntity cart) : void
+    +setDelivery(DeliveryEntity delivery) : void
+    +getAmount() : double
+    +getDiscount() : double
+    +addProduct(ProductEntity product) : void
+    +removeProduct(int productId) : void
+    +modifyProduct(int productId, int quantity) : void
+}
+
+class CartEntity
+{
+    -saleDetails : SaleDetailEntity
+    -total : double
+
+    +getAllProducts() : List<ProductEntity>
+    +getTotal() : double
+    +emptyCart() : void
+    +addProduct(ProductEntity product, int quantity) : void
+    +removeProduct(int productId) : void
+    +setQuantity(int productId, int quantity) : void
+    +getQuantity(int productId) : int
+}
+
+class DeliveryEntity
+{
+    -deliveryId : string
+    -saleId : string
+    -contactName : string
+    -phone : string
+    -address : string
+    -deliveryMan : string
+    -date : DateTime
+    -startTime : Time
+    -deliveryTime : Time
+    -finished : bool
+
+    +sendDelivery() : void
+    +cancel() : void
+    -isRegisterCustomer() : bool
+    +isFinished() : bool
+}
+
+class SessionEntity
+{
+    -user : UserEntity
+
+    +getUser() : UserEntity
+    +setUser(UserEntity user) : void
+}
+
+class SaleDetailEntity
+{
+    -saleDetailId : string
+    -product : ProductEntity
+    -quantity : int
+    -subtotal : double
+
+    +__construct(ProductEntity product)
+    +getSaleId() : string
+    +getProduct() : ProductEntity
+    +getSubtotal() : double
+}
+
+class ProductEntity
+{
+    -productId : int
+    -productType : int
+    -name : string
+    -description : string
+    -price : double
+    -quantity : int
+    -dateCreated : DateTime
+    -available : bool
+
+    +isAvailable() : bool
+}
+
+@enduml
