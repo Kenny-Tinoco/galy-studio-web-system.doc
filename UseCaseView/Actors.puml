@@ -1,0 +1,11 @@
+@startuml
+
+:User: as User
+
+User <|-- Receptionist
+User <|-- Seller
+User <|-- Administrator
+User <|-- Customer
+"Unregistered Customer" <|-- Customer
+
+@enduml
