@@ -1,4 +1,5 @@
 @startuml
+skinparam BackgroundColor transparent
 
 Seller "1" -- "n" Sale
 Sale "n" --* "1..*" Product

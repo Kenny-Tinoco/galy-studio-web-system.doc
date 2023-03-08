@@ -1,4 +1,5 @@
 @startuml
+skinparam BackgroundColor transparent
 
 skinparam packageStyle rectangle
 skinparam node {

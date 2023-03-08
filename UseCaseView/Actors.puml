@@ -1,4 +1,5 @@
 @startuml
+skinparam BackgroundColor transparent
 
 :User: as User
 
