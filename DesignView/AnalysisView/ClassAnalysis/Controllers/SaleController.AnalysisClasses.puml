@@ -1,0 +1,128 @@
+@startuml
+skinparam BackgroundColor transparent
+
+SaleController ..> ProductEntities
+SaleController -- CartEntity
+SaleController -- SaleEntity
+SaleController -- DeliveryEntity
+CartEntity --* SaleEntity
+CartEntity *-- SaleDetailEntity
+SaleEntity *-- DeliveryEntity
+SaleDetailEntity -- ProductEntity
+
+class SaleController <<Control>>
+{
+    +cancel()
+    +createDelivery()
+    +cancelDelivery()
+    +sendDelivery()
+    +orderProducts(cart, delivery)
+    +setCart(cart)
+    +setDelivery(delivery)
+    +getAmount() : double
+    +getDiscount() : double
+    +addProduct(ProductEntity product)
+    +removeProduct(int productId)
+    +modifyProduct(int productId, int quantity)
+}
+
+class ProductEntities <<Entity>>
+{
+    +save(ProductEntity product)
+}
+
+class CartEntity <<Entity>>
+{
+    -saleDetails
+    -total
+    +getAllProducts()
+    +getTotal()
+    +emptyCart()
+    +addProduct(ProducEntity product, int quantity)
+    +removeProduct(int productId)
+    +setQuantity(int productId, int quantity)
+    +getQuantity(int productId)
+}
+
+class SaleDetailEntity <<Entity>>
+{
+    -saleDetailId : string
+    -product : ProductEntity
+    -quantity : int
+    -subtotal : double
+    +getId() : string
+    +setProduct(ProductEntity product) : void
+    +setQuantity(int quantity) : void
+    +getSubtotal() : double
+}
+
+class ProductEntity <<Entity>>
+{
+    -productId : string
+    -productType
+    -name : string
+    -description : string
+    -price : double
+    -quantity : int
+    -dateCreated : Datetime
+    -available : bool
+
+    +getId() : string
+    +getName() : string
+    +getDescription() : string
+    +getPrice() : double
+    +setQuantity(int quantity) : void
+    +getQuantity() : int
+    +isAvailable() : bool
+}
+
+class SaleEntity <<Entity>>
+{
+    -saleId : string
+    -amount : double
+    -dateCreated : Datetime
+    -finished : bool
+    -saleDetails : List<SaleEntity>
+    -delivery : DeliveryEntity
+    -cart : CartEntity
+
+    +getAmount() : double
+    +isFinished() : bool
+    +getId() : string
+    +getAllProducts()
+    +addProduct(ProductEntity product, int quantity)
+    +removeProduct(string productId)
+    +setQuantity(string productId, int quantity)
+    +setCart(CartEntity entity)
+    +setDelivery(DeliveryEntity delivery)
+    +sendDelivery()
+}
+
+class DeliveryEntity <<Entity>>
+{
+    -deliveryId : string
+    -saleId : string
+    -contactName : string
+    -phone : string
+    -address : string
+    -deliveryMan : string
+    -date : Datetime
+    -startTime : Datetime
+    -deliveryTime : Time
+    -finished : bool
+
+    +sendDelivery()
+    +cancel()
+    -isRegisterCustomer()
+    +getDeliveryId()
+    +getSaleId() : string
+    +getContactName() : string
+    +getPhone() : string
+    +getAddress() : string
+    +getDeliveryMan() : string
+    +getDate() : Datetime
+    +getStartTime() : Datetime
+    +isFinished() : bool
+}
+
+@enduml
