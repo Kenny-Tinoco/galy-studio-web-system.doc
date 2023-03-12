@@ -12,6 +12,7 @@ SaleDetailEntity -- ProductEntity
 
 class SaleController <<Control>>
 {
+    +sell()
     +cancel()
     +createDelivery()
     +cancelDelivery()
@@ -50,6 +51,7 @@ class SaleDetailEntity <<Entity>>
     -product : ProductEntity
     -quantity : int
     -subtotal : double
+    +sell()
     +getId() : string
     +setProduct(ProductEntity product) : void
     +setQuantity(int quantity) : void
