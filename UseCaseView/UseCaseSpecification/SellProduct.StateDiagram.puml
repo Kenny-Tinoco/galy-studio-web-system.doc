@@ -21,7 +21,7 @@ Initial --> S1 : Se muestra los campos de \n los datos de venta y la opción ven
 S1 --> S2 : Se llenan los \n datos de la venta
 S3 --> S2 : Obtiene los datos \n de una solicitid de pedido
 S2 --> S2.choice : Se solicita vender
-S2.choice -down-> S4 : En local
+S2.choice -down-> S4e : En local
 S2.choice -right-> S5 : Delivery
 S5 -right-> S6 : En espera
 S6 --> S4 : Entrega existosamente

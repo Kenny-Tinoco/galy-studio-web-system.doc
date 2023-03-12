@@ -1,6 +1,6 @@
 @startuml
-allow_mixing
 skinparam BackgroundColor transparent
+allow_mixing
 
 class SaleView <<Boundary>>
 class DeliveryView <<Boundary>>

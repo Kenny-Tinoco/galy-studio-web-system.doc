@@ -1,0 +1,38 @@
+@startuml
+skinparam BackgroundColor transparent
+
+Views ..> Controllers
+Controllers ..> Models
+
+package Views
+{
+    Actor ..> Course
+    Actor ..> SaleProducts
+    Actor ..> Common
+    Actor ..> ProfessionalService
+
+    Course .left.> ProfessionalService
+    ProfessionalService .left.> Common
+
+    package Actor {}
+    package SaleProducts {}
+    package Course {}
+    package Common {}
+    package ProfessionalService {}
+}
+
+package Controllers
+{
+    Product ..> Controllers.Common
+    Service ..> Controllers.Common
+
+    package Product {}
+    package Service {}
+    package Common as Controllers.Common {}
+}
+
+package Models
+{
+}
+
+@enduml
