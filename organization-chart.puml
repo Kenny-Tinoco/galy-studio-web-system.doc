@@ -1,0 +1,15 @@
+@startwbs
+skinparam BackgroundColor transparent
+
+* Fundador / \nPropietario
+** Resposable del\n    Personal
+*** Recepción
+**** Cajero
+*** Maquillaje
+*** Manicura
+*** Delivery
+** Resposable de la\n    Publicidad
+*** Creador de\nContenidos
+** Resposable de\n  Contabilidad
+*** Caja
+@endwbs
