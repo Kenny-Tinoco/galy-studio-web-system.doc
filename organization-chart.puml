@@ -1,15 +1,14 @@
 @startwbs
 skinparam BackgroundColor transparent
 
-* Fundador / \nPropietario
-** Resposable del\n    Personal
+* Fundador /\nPropietario
+** Responsable\ndel Personal
 *** Recepción
-**** Cajero
-*** Maquillaje
-*** Manicura
+***< Maquillista y Estilista
 *** Delivery
-** Resposable de la\n    Publicidad
-*** Creador de\nContenidos
-** Resposable de\n  Contabilidad
+** Responsable\nde Contabilidad
 *** Caja
-@endwbs
+** Responsable\nde la publicidad
+*** Creador de\n Contenidos
+
+@endwb
