@@ -1,35 +1,30 @@
 @startuml
 skinparam BackgroundColor transparent
 
-Seller "1" -- "n" Sale
-Sale "n" --* "1..*" Product
-Sale "1" -- "1" Delivery
+Cliente "1" -- "n" Venta
+Venta "n" --* "1..*" Producto
+Venta "1" -- "1" Delivery
 
-class Seller
-class Sale
+class Venta
 class Delivery
-class Product
+class Producto
 
-Boss *-- Receptionist
-Boss *-- Administrator
+Cita -- Recepcionista
+Reservación -- Recepcionista
 
-Receptionist -- Appointment
-Receptionist -- Reservation
+Cliente "1" -- "n" Cita
+Cliente "1" -- "n" Reservación
 
-Customer -- Appointment
-Customer -- Reservation
+Reservación "1..*" -- "1" Curso
+Cita "1..*" -- "1" "Servicio \n Profesional "
+Venta -- Vendedor
 
-Reservation "1..*" -- "1" Course
-Appointment "1..*" -- "1" ProfessionalService
-ProfessionalService *-- "1..*" Material
-
-
-class Receptionist
-class Appointment
-class ProfessionalService
-class Material
-class Customer
-class Reservation
-class Course
+class Recepcionista
+class Cita
+class "Servicio \n Profesional "
+class Cliente
+class Reservación
+class Curso
+class Vendedor
 
 @enduml
