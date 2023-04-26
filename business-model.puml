@@ -1,30 +1,36 @@
 @startuml
 skinparam BackgroundColor transparent
 
-Cliente "1" -- "n" Venta
-Venta "n" --* "1..*" Producto
-Venta "1" -- "1" Delivery
+state Cliente
+state Venta
+state Cita
+state Reservación
+state Vendedor
+state Recepcionista
+state Caja
+state Producto
+state Entrega
+state Capacitación
+state "Servicio\nProfesional" as servicio
+state "Maqullista\ \nEstilista" as Especialista
 
-class Venta
-class Delivery
-class Producto
+Cliente --> Vendedor : Es atendido por
+Cliente --> Recepcionista : Es atendido por
 
-Cita -- Recepcionista
-Reservación -- Recepcionista
+Vendedor --> Venta : Lleva la
+Vendedor --> Caja : Registra en la
+Vendedor --> Entrega: Manda el
 
-Cliente "1" -- "n" Cita
-Cliente "1" -- "n" Reservación
+Entrega -right-> Venta : Contiene
+Venta --> Producto : Contiene
 
-Reservación "1..*" -- "1" Curso
-Cita "1..*" -- "1" "Servicio \n Profesional "
-Venta -- Vendedor
+Recepcionista --> Cita : Gestiona
+Recepcionista --> Reservación : Gestiona
+Recepcionista --> Caja
 
-class Recepcionista
-class Cita
-class "Servicio \n Profesional "
-class Cliente
-class Reservación
-class Curso
-class Vendedor
+Cita --> Especialista : Atiende
+Reservación --> Especialista : Atiende
 
+Especialista -left-> servicio
+Especialista -right-> Capacitación
 @enduml
