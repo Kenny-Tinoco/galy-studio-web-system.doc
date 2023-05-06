@@ -12,25 +12,27 @@ state Producto
 state Entrega
 state Capacitación
 state "Servicio\nProfesional" as servicio
-state "Maqullista\ \nEstilista" as Especialista
+state "Maquillista\ \nEstilista" as Especialista
 
 Cliente --> Vendedor : Es atendido por
 Cliente --> Recepcionista : Es atendido por
+Cliente <-- Especialista
+Cliente --> Especialista
 
 Vendedor --> Venta : Lleva la
 Vendedor --> Caja : Registra en la
-Vendedor --> Entrega: Manda el
+Vendedor --> Entrega: Manda la
 
-Entrega -right-> Venta : Contiene
+Entrega --> Producto  : Lleva los
 Venta --> Producto : Contiene
 
-Recepcionista --> Cita : Gestiona
+Recepcionista -left-> Cita : Gestiona
 Recepcionista --> Reservación : Gestiona
-Recepcionista --> Caja
+Recepcionista --> Caja : Registra en la
 
-Cita --> Especialista : Atiende
-Reservación --> Especialista : Atiende
+Especialista -right-> Cita
+Especialista --> Reservación
 
-Especialista -left-> servicio
-Especialista -right-> Capacitación
+Especialista --> servicio : Aplica
+Especialista --> Capacitación : Imparte
 @enduml
